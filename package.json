@@ -4,8 +4,8 @@
   "description": "![Phaser avatar studying](./src/img/study.png)",
   "main": "webpack.config.js",
   "scripts": {
-    "build": "webpack",
-    "watch": "npx webpack --watch",
+    "dev": "webpack --mode development",
+    "build": "webpack --mode production",
     "start": "webpack serve --mode=development --config webpack.config.js --open"
   },
   "repository": {
@@ -20,13 +20,16 @@
   },
   "homepage": "https://github.com/MkrtichSargsyan/RPG-game-js#readme",
   "devDependencies": {
+    "css-loader": "^5.2.1",
     "file-loader": "6.2.0",
     "html-webpack-plugin": "^5.3.1",
+    "style-loader": "^2.0.0",
     "webpack": "^5.31.0",
     "webpack-cli": "^4.6.0",
     "webpack-dev-server": "^3.11.2"
   },
   "dependencies": {
-    "phaser": "^3.54.0"
+    "phaser": "^3.54.0",
+    "phaser-matter-collision-plugin": "^0.10.2"
   }
 }

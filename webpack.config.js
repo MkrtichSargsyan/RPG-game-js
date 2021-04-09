@@ -19,6 +19,10 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.css$/i,
+        use: ['style-loader', 'css-loader'],
+      },
+      {
         test: /\.(png|svg|jpg|jpeg|gif|mp4)$/i,
         use: {
           loader: 'file-loader',
@@ -29,5 +33,11 @@ module.exports = {
         },
       },
     ]
-  }
+  },
+  devServer: {
+    port:1234,
+    watchContentBase: true,
+    contentBase: path.resolve(__dirname, 'dist'),
+    open: true,
+  },
 };
