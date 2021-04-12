@@ -31,6 +31,7 @@ export default class MainScene extends Phaser.Scene{
     }else if(this.inputKeys.down.isDown){
       playerVelocity.y = 1;
     }
+    playerVelocity.normalize();
     playerVelocity.scale(speed)
     this.player.setVelocity(playerVelocity.x,playerVelocity.y)
   }
