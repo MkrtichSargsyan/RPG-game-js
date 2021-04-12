@@ -1,0 +1,192 @@
+{
+    "anims": [
+        {
+            "key": "hero_run",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 12,
+            "frames": [
+                {
+                    "key": "hero",
+                    "frame": "heroknight_run_0"
+                },
+                {
+                    "key": "hero",
+                    "frame": "heroknight_run_1"
+                },
+                {
+                    "key": "hero",
+                    "frame": "heroknight_run_2"
+                },
+                {
+                    "key": "hero",
+                    "frame": "heroknight_run_3"
+                },
+                {
+                    "key": "hero",
+                    "frame": "heroknight_run_4"
+                },
+                {
+                    "key": "hero",
+                    "frame": "heroknight_run_5"
+                },
+                {
+                    "key": "hero",
+                    "frame": "heroknight_run_6"
+                },
+                {
+                    "key": "hero",
+                    "frame": "heroknight_run_7"
+                },
+                {
+                    "key": "hero",
+                    "frame": "heroknight_run_8"
+                },
+                {
+                    "key": "hero",
+                    "frame": "heroknight_run_9"
+                }
+            ]
+        },
+        {
+            "key": "hero_idle",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 12,
+            "frames": [
+                {
+                    "key": "hero",
+                    "frame": "heroknight_idle_0"
+                },
+                {
+                    "key": "hero",
+                    "frame": "heroknight_idle_1"
+                },
+                {
+                    "key": "hero",
+                    "frame": "heroknight_idle_2"
+                },
+                {
+                    "key": "hero",
+                    "frame": "heroknight_idle_3"
+                },
+                {
+                    "key": "hero",
+                    "frame": "heroknight_idle_4"
+                },
+                {
+                    "key": "hero",
+                    "frame": "heroknight_idle_5"
+                },
+                {
+                    "key": "hero",
+                    "frame": "heroknight_idle_6"
+                },
+                {
+                    "key": "hero",
+                    "frame": "heroknight_idle_7"
+                }
+            ]
+        },
+        {
+            "key": "hero_hurt",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 12,
+            "frames": [
+                {
+                    "key": "hero",
+                    "frame": "heroknight_hurt_0"
+                },
+                {
+                    "key": "hero",
+                    "frame": "heroknight_hurt_1"
+                },
+                {
+                    "key": "hero",
+                    "frame": "heroknight_hurt_2"
+                }
+            ]
+        },
+        {
+            "key": "hero_death",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 12,
+            "frames": [
+                {
+                    "key": "hero",
+                    "frame": "heroknight_death_0"
+                },
+                {
+                    "key": "hero",
+                    "frame": "heroknight_death_1"
+                },
+                {
+                    "key": "hero",
+                    "frame": "heroknight_death_2"
+                },
+                {
+                    "key": "hero",
+                    "frame": "heroknight_death_3"
+                },
+                {
+                    "key": "hero",
+                    "frame": "heroknight_death_4"
+                },
+                {
+                    "key": "hero",
+                    "frame": "heroknight_death_5"
+                },
+                {
+                    "key": "hero",
+                    "frame": "heroknight_death_6"
+                },
+                {
+                    "key": "hero",
+                    "frame": "heroknight_death_7"
+                },
+                {
+                    "key": "hero",
+                    "frame": "heroknight_death_8"
+                },
+                {
+                    "key": "hero",
+                    "frame": "heroknight_death_9"
+                }
+            ]
+        },
+        {
+            "key": "hero_atack",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 12,
+            "frames": [
+                {
+                    "key": "hero",
+                    "frame": "heroknight_attack1_0"
+                },
+                {
+                    "key": "hero",
+                    "frame": "heroknight_attack1_1"
+                },
+                {
+                    "key": "hero",
+                    "frame": "heroknight_attack1_2"
+                },
+                {
+                    "key": "hero",
+                    "frame": "heroknight_attack1_3"
+                },
+                {
+                    "key": "hero",
+                    "frame": "heroknight_attack1_4"
+                },
+                {
+                    "key": "hero",
+                    "frame": "heroknight_attack1_5"
+                }
+            ]
+        }
+    ]
+}

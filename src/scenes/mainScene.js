@@ -1,6 +1,7 @@
 import 'phaser';
 import heroKnightPic from '../assets/images/hero.png'
 import heroKnightJson from '../assets/images/hero_atlas.json'
+import heroKnightAnim from '../assets/images/hero_anim.json'
 
 
 export default class MainScene extends Phaser.Scene{
@@ -11,12 +12,11 @@ export default class MainScene extends Phaser.Scene{
   preload(){
     console.log('preload');
     this.load.atlas('hero',heroKnightPic,heroKnightJson)
+    this.load.animation('hero_anim',heroKnightAnim)
   }
   create(){
     console.log('create');
-    let f = heroKnightJson.frames[0]
-    console.log(f);
-    this.player = new Phaser.Physics.Matter.Sprite(this.matter.world,20,20,'hero',f.frame)
+    this.player = new Phaser.Physics.Matter.Sprite(this.matter.world,20,20,'hero','heroknight_attack1_0')
     this.add.existing(this.player)
     this.inputKeys = this.input.keyboard.addKeys({
       up:Phaser.Input.Keyboard.KeyCodes.W,
@@ -26,6 +26,7 @@ export default class MainScene extends Phaser.Scene{
     })
   }
   update(){
+    this.player.anims.play('hero_idle',true)
     const speed = 2.5;
     let playerVelocity = new Phaser.Math.Vector2();
     if(this.inputKeys.left.isDown){
