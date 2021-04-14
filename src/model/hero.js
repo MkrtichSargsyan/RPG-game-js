@@ -1,4 +1,4 @@
-import 'phaser';
+import "phaser";
 import heroKnightPic from "../assets/images/hero.png";
 import heroKnightJson from "../assets/images/hero_atlas.json";
 import heroKnightAnim from "../assets/images/hero_anim.json";
@@ -8,15 +8,21 @@ export default class Hero extends Phaser.Physics.Matter.Sprite {
     let { scene, x, y, texture, frame } = data;
     super(scene.matter.world, x, y, texture, frame);
     this.scene.add.existing(this);
+
+    const {Body,Bodies} = Phaser.Physics.Matter.Matter;
+    var playerCollider = Bodies
   }
 
-  static preload(scene){
-    scene.load.atlas('hero',heroKnightPic,heroKnightJson)
-    scene.load.animation('hero_anim',heroKnightAnim)
+  static preload(scene) {
+    scene.load.atlas("hero", heroKnightPic, heroKnightJson);
+    scene.load.animation("hero_anim", heroKnightAnim);
+  }
+
+  get velocity() {
+    return this.body.velocity;
   }
 
   update() {
-    this.anims.play("hero_idle", true);
     const speed = 2.5;
     let playerVelocity = new Phaser.Math.Vector2();
     if (this.inputKeys.left.isDown) {
@@ -32,5 +38,10 @@ export default class Hero extends Phaser.Physics.Matter.Sprite {
     playerVelocity.normalize();
     playerVelocity.scale(speed);
     this.setVelocity(playerVelocity.x, playerVelocity.y);
+    if (Math.abs(this.velocity.x) > 0.1 || Math.abs(this.velocity.y) > 0.1) {
+      this.anims.play("hero_run", true);
+    } else {
+      this.anims.play("hero_idle", true);
+    }
   }
 }
