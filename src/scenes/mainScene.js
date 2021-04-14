@@ -15,8 +15,16 @@ export default class MainScene extends Phaser.Scene {
       x: 20,
       y: 20,
       texture: "hero",
+      frame: "heroknight_idle_0",
+    });
+    let textPlayer =new Hero({
+      scene: this,
+      x: 200,
+      y: 200,
+      texture: "hero",
       frame: "heroknight_attack1_0",
     });
+    
     this.player.inputKeys = this.input.keyboard.addKeys({
       up: Phaser.Input.Keyboard.KeyCodes.W,
       down: Phaser.Input.Keyboard.KeyCodes.S,
