@@ -1,7 +1,7 @@
 import "phaser";
 import Hero from "../model/hero.js";
-import mapImage from '../assets/images/pipo-map001.png'
-import mapJson from '../assets/images/map.json'
+import mapImage from "../assets/images/pipo-map001.png";
+import mapJson from "../assets/images/map.json";
 
 export default class MainScene extends Phaser.Scene {
   constructor() {
@@ -10,23 +10,26 @@ export default class MainScene extends Phaser.Scene {
 
   preload() {
     Hero.preload(this);
-    this.load.image('tiles',mapImage)
-    this.load.tilemapTiledJSON('map',mapJson)
+    this.load.image("tiles", mapImage);
+    this.load.tilemapTiledJSON("map", mapJson);
   }
   create() {
-    const map = this.make.tilemap({key:'map'})
-    const tileset = map.addTilesetImage('pipo-map001','tiles',32,32,0,0)
-    const layer1 = map.createLayer('Tile Layer 1',tileset,0,0);
-    const layer2 = map.createLayer('Tile Layer 2',tileset,0,0);
-    this.player =new Hero({
+    const map = this.make.tilemap({ key: "map" });
+    const tileset = map.addTilesetImage("pipo-map001", "tiles", 32, 32, 0, 0);
+    const layer1 = map.createStaticLayer("Tile Layer 1", tileset, 0, 0);
+    const layer2 = map.createStaticLayer("Tile Layer 2", tileset, 0, 0);
+    layer1.setCollisionByProperty({ collides: true });
+    layer2.setCollisionByProperty({ collides: true });
+    this.matter.world.convertTilemapLayer(layer1);
+    this.matter.world.convertTilemapLayer(layer2);
+    this.player = new Hero({
       scene: this,
-      x: 120,
-      y: 100,
+      x: 80,
+      y: 160,
       texture: "hero",
       frame: "heroknight_idle_0",
     });
-    
-    
+
     this.player.inputKeys = this.input.keyboard.addKeys({
       up: Phaser.Input.Keyboard.KeyCodes.W,
       down: Phaser.Input.Keyboard.KeyCodes.S,
