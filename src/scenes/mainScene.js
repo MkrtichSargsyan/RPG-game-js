@@ -1,6 +1,6 @@
 import "phaser";
 import Hero from "../model/hero.js";
-import mapImage from '../assets/images/pipo-map001_at.png'
+import mapImage from '../assets/images/pipo-map001.png'
 import mapJson from '../assets/images/map.json'
 
 export default class MainScene extends Phaser.Scene {
@@ -15,12 +15,13 @@ export default class MainScene extends Phaser.Scene {
   }
   create() {
     const map = this.make.tilemap({key:'map'})
-    const tileset = map.addTilesetImage('pipo-map001_at','tiles',32,32,0,0)
+    const tileset = map.addTilesetImage('pipo-map001','tiles',32,32,0,0)
     const layer1 = map.createLayer('Tile Layer 1',tileset,0,0);
+    const layer2 = map.createLayer('Tile Layer 2',tileset,0,0);
     this.player =new Hero({
       scene: this,
-      x: 20,
-      y: 20,
+      x: 120,
+      y: 100,
       texture: "hero",
       frame: "heroknight_idle_0",
     });
