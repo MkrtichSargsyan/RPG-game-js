@@ -159,9 +159,9 @@
         {
             "key": "hero_atack",
             "type": "frames",
-            "repeat": 3,
+            "repeat": -1,
             "frameRate": 12,
-            "frames": [
+            "frames": [ 
                 {
                     "key": "hero",
                     "frame": "heroknight_attack1_0"
