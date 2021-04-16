@@ -2,6 +2,7 @@ import "phaser";
 import heroKnightPic from "../assets/images/hero.png";
 import heroKnightJson from "../assets/images/hero_atlas.json";
 import heroKnightAnim from "../assets/images/hero_anim.json";
+import itemsPic from "../assets/images/items.png";
 
 export default class Hero extends Phaser.Physics.Matter.Sprite {
   constructor(data) {
@@ -22,13 +23,17 @@ export default class Hero extends Phaser.Physics.Matter.Sprite {
       parts: [playerCollider, playerSensor],
       frictionAir: 0.35,
     });
-    this.setExistingBody(compoundBody)
-    this.setFixedRotation()
+    this.setExistingBody(compoundBody);
+    this.setFixedRotation();
   }
 
   static preload(scene) {
     scene.load.atlas("hero", heroKnightPic, heroKnightJson);
     scene.load.animation("hero_anim", heroKnightAnim);
+    scene.load.spritesheet("items", itemsPic, {
+      frameWidth: 32,
+      frameHeight: 32,
+    });
   }
 
   get velocity() {
@@ -40,6 +45,7 @@ export default class Hero extends Phaser.Physics.Matter.Sprite {
     let playerVelocity = new Phaser.Math.Vector2();
     if (this.inputKeys.left.isDown) {
       playerVelocity.x = -1;
+      pointer=>this.setFlipX(pointer.worldX < this.x)
     } else if (this.inputKeys.right.isDown) {
       playerVelocity.x = 1;
     }
@@ -51,10 +57,17 @@ export default class Hero extends Phaser.Physics.Matter.Sprite {
     playerVelocity.normalize();
     playerVelocity.scale(speed);
     this.setVelocity(playerVelocity.x, playerVelocity.y);
+
+    let pointer = this.scene.input.activePointer;
+
     if (Math.abs(this.velocity.x) > 0.1 || Math.abs(this.velocity.y) > 0.1) {
       this.anims.play("hero_run", true);
+    }else if(pointer.isDown){
+      this.anims.play("hero_atack", true);
     } else {
       this.anims.play("hero_idle", true);
     }
+    this.scene.input.on('pointermove',pointer=>this.setFlipX(pointer.worldX < this.x))
   }
+
 }
