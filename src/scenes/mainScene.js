@@ -29,28 +29,28 @@ export default class MainScene extends Phaser.Scene {
     this.matter.world.convertTilemapLayer(layer2);
 
     let castle = new Phaser.Physics.Matter.Sprite(this.matter.world,650,450,'resources','castle')
-    let tree1 = new Phaser.Physics.Matter.Sprite(this.matter.world,450,150,'resources','tree')
-    let tree2 = new Phaser.Physics.Matter.Sprite(this.matter.world,450,250,'resources','tree')
-    let tree3 = new Phaser.Physics.Matter.Sprite(this.matter.world,450,350,'resources','tree')
-    let tree4 = new Phaser.Physics.Matter.Sprite(this.matter.world,450,450,'resources','tree')
-    let tree5 = new Phaser.Physics.Matter.Sprite(this.matter.world,450,550,'resources','tree')
-    let tree6 = new Phaser.Physics.Matter.Sprite(this.matter.world,450,120,'resources','tree')
-    let tree7 = new Phaser.Physics.Matter.Sprite(this.matter.world,450,140,'resources','tree')
-    let tree8 = new Phaser.Physics.Matter.Sprite(this.matter.world,450,130,'resources','tree')
-    let tree9 = new Phaser.Physics.Matter.Sprite(this.matter.world,450,200,'resources','tree')
-    let tree0 = new Phaser.Physics.Matter.Sprite(this.matter.world,550,50,'resources','tree')
+    let tree0 = new Phaser.Physics.Matter.Sprite(this.matter.world,500,120,'resources','tree')
+    let tree1 = new Phaser.Physics.Matter.Sprite(this.matter.world,300,170,'resources','tree')
+    let tree2 = new Phaser.Physics.Matter.Sprite(this.matter.world,500,220,'resources','tree')
+    let tree3 = new Phaser.Physics.Matter.Sprite(this.matter.world,600,280,'resources','tree')
+    let tree4 = new Phaser.Physics.Matter.Sprite(this.matter.world,200,380,'resources','tree')
+    let tree5 = new Phaser.Physics.Matter.Sprite(this.matter.world,450,420,'resources','tree')
+    let tree6 = new Phaser.Physics.Matter.Sprite(this.matter.world,300,420,'resources','tree')
+    let tree7 = new Phaser.Physics.Matter.Sprite(this.matter.world,500,500,'resources','tree')
+    let tree8 = new Phaser.Physics.Matter.Sprite(this.matter.world,400,550,'resources','tree')
+    let tree9 = new Phaser.Physics.Matter.Sprite(this.matter.world,700,320,'resources','tree')
 
     let cave1 = new Phaser.Physics.Matter.Sprite(this.matter.world,150,500,'resources','cave1')
     let cave2 = new Phaser.Physics.Matter.Sprite(this.matter.world,690,120,'resources','cave2')
-    let cave3 = new Phaser.Physics.Matter.Sprite(this.matter.world,300,500,'resources','cave3')
-    let cave4 = new Phaser.Physics.Matter.Sprite(this.matter.world,400,500,'resources','cave4')
-    let cave5 = new Phaser.Physics.Matter.Sprite(this.matter.world,450,500,'resources','cave5')
-    let cave6 = new Phaser.Physics.Matter.Sprite(this.matter.world,350,500,'resources','cave6')
-    let tower2 = new Phaser.Physics.Matter.Sprite(this.matter.world,250,500,'resources','tower2')
-    let tower1 = new Phaser.Physics.Matter.Sprite(this.matter.world,150,500,'resources','tower1')
+    let cave3 = new Phaser.Physics.Matter.Sprite(this.matter.world,600,180,'resources','cave3')
+    let cave4 = new Phaser.Physics.Matter.Sprite(this.matter.world,700,200,'resources','cave4')
+    let cave5 = new Phaser.Physics.Matter.Sprite(this.matter.world,650,500,'resources','cave5')
+    let cave6 = new Phaser.Physics.Matter.Sprite(this.matter.world,250,500,'resources','cave6')
+    let tower2 = new Phaser.Physics.Matter.Sprite(this.matter.world,400,200,'resources','tower2')
+    let tower1 = new Phaser.Physics.Matter.Sprite(this.matter.world,310,350,'resources','tower1')
 
-    let items = [castle,tree0,,tree1,tree2,tree3,tree4,tree5,tree6,tree7,tree8,tree9,cave1,cave2,cave3,cave4,cave5,cave6,tower1,tower2]
-    // items.forEach((el)=>el.setStatic(true));
+    let items = [castle,tree0,tree1,tree2,tree3,tree4,tree5,tree6,tree7,tree8,tree9,cave1,cave2,cave3,cave4,cave5,cave6,tower1,tower2]
+    items.forEach((el)=>el.setStatic(true));
 
     this.add.existing(tree0)
     this.add.existing(tree1)
