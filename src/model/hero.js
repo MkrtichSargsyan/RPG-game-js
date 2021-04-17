@@ -8,6 +8,7 @@ export default class Hero extends Phaser.Physics.Matter.Sprite {
   constructor(data) {
     let { scene, x, y, texture, frame } = data;
     super(scene.matter.world, x, y, texture, frame);
+    this.touching = []; 
     this.scene.add.existing(this);
 
     const { Body, Bodies } = Phaser.Physics.Matter.Matter;
@@ -25,6 +26,7 @@ export default class Hero extends Phaser.Physics.Matter.Sprite {
     });
     this.setExistingBody(compoundBody);
     this.setFixedRotation();
+    this.CreateMiningCollisions(playerSensor);
   }
 
   static preload(scene) {
@@ -68,6 +70,19 @@ export default class Hero extends Phaser.Physics.Matter.Sprite {
       this.anims.play("hero_idle", true);
     }
     this.scene.input.on('pointermove',pointer=>this.setFlipX(pointer.worldX < this.x))
+  }
+
+
+  CreateMiningCollisions(playerSensor){
+      this.scene.matterCollision.addOnCollideStart({
+        objectA:[playerSensor],
+        callback:other=>{
+          if(other.bodyB.isSensor) return;
+          this.touching.push(other.gameObjectB);
+          console.log(this.touching.length,other.gameObjectB.name);
+        },
+        context:this.scene,
+      })
   }
 
 }
