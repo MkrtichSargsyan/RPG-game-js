@@ -66,6 +66,7 @@ export default class Hero extends Phaser.Physics.Matter.Sprite {
       this.anims.play("hero_run", true);
     } else if (pointer.isDown) {
       this.anims.play("hero_atack", true);
+      this.whackStuff();
     } else {
       this.anims.play("hero_idle", true);
     }
@@ -94,6 +95,14 @@ export default class Hero extends Phaser.Physics.Matter.Sprite {
         console.log(this.touching.length);
       },
       context:this.scene
+    })
+  }
+
+  whackStuff(){
+    this.touching = this.touching.filter(gameObject =>gameObject.hit && !gameObject.dead);
+    this.touching.forEach(gameObject=>{
+      gameObject.hit();
+      if(gameObject.dead) gameObject.destroy()
     })
   }
 }

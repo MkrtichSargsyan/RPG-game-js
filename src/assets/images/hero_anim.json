@@ -159,7 +159,7 @@
         {
             "key": "hero_atack",
             "type": "frames",
-            "repeat": -1,
+            "repeat": 1,
             "frameRate": 12,
             "frames": [ 
                 {

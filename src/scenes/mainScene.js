@@ -3,8 +3,8 @@ import Hero from "../model/hero.js";
 import mapImage from "../assets/images/pipo-map001.png";
 import mapJson from "../assets/images/map.json";
 
-import resourcesPic from "../assets/images/resources.png";
-import resourcesJson from "../assets/images/resources_atlas.json";
+
+import Resource from "../model/resource.js";
 
 export default class MainScene extends Phaser.Scene {
   constructor() {
@@ -13,9 +13,9 @@ export default class MainScene extends Phaser.Scene {
 
   preload() {
     Hero.preload(this);
+    Resource.preload(this)
     this.load.image("tiles", mapImage);
     this.load.tilemapTiledJSON("map", mapJson);
-    this.load.atlas('resources',resourcesPic,resourcesJson)
   }
   create() {
     const map = this.make.tilemap({ key: "map" });
@@ -28,49 +28,7 @@ export default class MainScene extends Phaser.Scene {
     this.matter.world.convertTilemapLayer(layer1);
     this.matter.world.convertTilemapLayer(layer2);
 
-    let castle = new Phaser.Physics.Matter.Sprite(this.matter.world,650,450,'resources','castle')
-    let tree0 = new Phaser.Physics.Matter.Sprite(this.matter.world,500,120,'resources','tree')
-    let tree1 = new Phaser.Physics.Matter.Sprite(this.matter.world,300,170,'resources','tree')
-    let tree2 = new Phaser.Physics.Matter.Sprite(this.matter.world,500,220,'resources','tree')
-    let tree3 = new Phaser.Physics.Matter.Sprite(this.matter.world,600,280,'resources','tree')
-    let tree4 = new Phaser.Physics.Matter.Sprite(this.matter.world,200,380,'resources','tree')
-    let tree5 = new Phaser.Physics.Matter.Sprite(this.matter.world,450,420,'resources','tree')
-    let tree6 = new Phaser.Physics.Matter.Sprite(this.matter.world,300,420,'resources','tree')
-    let tree7 = new Phaser.Physics.Matter.Sprite(this.matter.world,500,500,'resources','tree')
-    let tree8 = new Phaser.Physics.Matter.Sprite(this.matter.world,400,550,'resources','tree')
-    let tree9 = new Phaser.Physics.Matter.Sprite(this.matter.world,700,320,'resources','tree')
-
-    let cave1 = new Phaser.Physics.Matter.Sprite(this.matter.world,150,500,'resources','cave1')
-    let cave2 = new Phaser.Physics.Matter.Sprite(this.matter.world,690,120,'resources','cave2')
-    let cave3 = new Phaser.Physics.Matter.Sprite(this.matter.world,600,180,'resources','cave3')
-    let cave4 = new Phaser.Physics.Matter.Sprite(this.matter.world,700,200,'resources','cave4')
-    let cave5 = new Phaser.Physics.Matter.Sprite(this.matter.world,650,560,'resources','cave5')
-    let cave6 = new Phaser.Physics.Matter.Sprite(this.matter.world,250,500,'resources','cave6')
-    let tower2 = new Phaser.Physics.Matter.Sprite(this.matter.world,400,200,'resources','tower2')
-    let tower1 = new Phaser.Physics.Matter.Sprite(this.matter.world,310,350,'resources','tower1')
-
-    let items = [castle,tree0,tree1,tree2,tree3,tree4,tree5,tree6,tree7,tree8,tree9,cave1,cave2,cave3,cave4,cave5,cave6,tower1,tower2]
-    items.forEach((el)=>el.setStatic(true));
-
-    this.add.existing(tree0)
-    this.add.existing(tree1)
-    this.add.existing(tree2)
-    this.add.existing(tree3)
-    this.add.existing(tree4)
-    this.add.existing(tree5)
-    this.add.existing(tree6)
-    this.add.existing(tree7)
-    this.add.existing(tree8)
-    this.add.existing(tree9)
-    this.add.existing(castle)
-    this.add.existing(cave1)
-    this.add.existing(cave2)
-    this.add.existing(cave3)
-    this.add.existing(cave4)
-    this.add.existing(cave5)
-    this.add.existing(cave6)
-    this.add.existing(tower2)
-    this.add.existing(tower1)
+    this.addResources()
 
     this.player = new Hero({
       scene: this,
@@ -86,6 +44,13 @@ export default class MainScene extends Phaser.Scene {
       left: Phaser.Input.Keyboard.KeyCodes.A,
       right: Phaser.Input.Keyboard.KeyCodes.D,
     });
+  }
+
+  addResources() {
+    const resources = this.map.getObjectLayer('Resources');
+    resources.objects.forEach(resource =>{
+      let resItem = new Resource({scene:this,resource})    
+    })
   }
 
   update() {
