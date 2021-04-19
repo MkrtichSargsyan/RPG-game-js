@@ -49,10 +49,6 @@ export default class MainScene extends Phaser.Scene {
     let tower2 = new Phaser.Physics.Matter.Sprite(this.matter.world,400,200,'resources','tower2')
     let tower1 = new Phaser.Physics.Matter.Sprite(this.matter.world,310,350,'resources','tower1')
 
-    castle.name = castle.frame.name;
-    //remember to write names here when wake up
-    console.log(tree0);
-
     let items = [castle,tree0,tree1,tree2,tree3,tree4,tree5,tree6,tree7,tree8,tree9,cave1,cave2,cave3,cave4,cave5,cave6,tower1,tower2]
     items.forEach((el)=>el.setStatic(true));
 

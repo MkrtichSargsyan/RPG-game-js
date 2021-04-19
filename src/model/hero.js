@@ -8,7 +8,7 @@ export default class Hero extends Phaser.Physics.Matter.Sprite {
   constructor(data) {
     let { scene, x, y, texture, frame } = data;
     super(scene.matter.world, x, y, texture, frame);
-    this.touching = []; 
+    this.touching = [];
     this.scene.add.existing(this);
 
     const { Body, Bodies } = Phaser.Physics.Matter.Matter;
@@ -47,7 +47,7 @@ export default class Hero extends Phaser.Physics.Matter.Sprite {
     let playerVelocity = new Phaser.Math.Vector2();
     if (this.inputKeys.left.isDown) {
       playerVelocity.x = -1;
-      pointer=>this.setFlipX(pointer.worldX < this.x)
+      (pointer) => this.setFlipX(pointer.worldX < this.x);
     } else if (this.inputKeys.right.isDown) {
       playerVelocity.x = 1;
     }
@@ -64,25 +64,36 @@ export default class Hero extends Phaser.Physics.Matter.Sprite {
 
     if (Math.abs(this.velocity.x) > 0.1 || Math.abs(this.velocity.y) > 0.1) {
       this.anims.play("hero_run", true);
-    }else if(pointer.isDown){
+    } else if (pointer.isDown) {
       this.anims.play("hero_atack", true);
     } else {
       this.anims.play("hero_idle", true);
     }
-    this.scene.input.on('pointermove',pointer=>this.setFlipX(pointer.worldX < this.x))
+    this.scene.input.on("pointermove", (pointer) =>
+      this.setFlipX(pointer.worldX < this.x)
+    );
   }
 
-
-  CreateMiningCollisions(playerSensor){
-      this.scene.matterCollision.addOnCollideStart({
-        objectA:[playerSensor],
-        callback:other=>{
-          if(other.bodyB.isSensor) return;
-          this.touching.push(other.gameObjectB);
-          console.log(this.touching.length,other.gameObjectB.name);
-        },
-        context:this.scene,
-      })
+  CreateMiningCollisions(playerSensor) {
+    this.scene.matterCollision.addOnCollideStart({
+      objectA: [playerSensor],
+      callback: (other) => {
+        if (other.bodyB.isSensor) return;
+        this.touching.push(other.gameObjectB);
+        console.log(this.touching.length);
+        if (other.gameObjectB.frame) {
+          console.log(other.gameObjectB.frame.name);
+        }
+      },
+      context: this.scene,
+    });
+    this.scene.matterCollision.addOnCollideEnd({
+      objectA:[playerSensor],
+      callback: other=>{
+        this.touching = this.touching.filter(gameObject=> gameObject != other.gameObjectB)
+        console.log(this.touching.length);
+      },
+      context:this.scene
+    })
   }
-
 }
