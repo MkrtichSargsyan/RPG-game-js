@@ -1,10 +1,12 @@
 import resourcesPic from "../assets/images/resources.png";
 import resourcesJson from "../assets/images/resources_atlas.json";
+import DropItem from "./dropItem.js";
 
 import treeAudio from '../assets/sounds/tree.mp3'
 import cave1Audio from '../assets/sounds/cave1.mp3'
 import cave2Audio from '../assets/sounds/cave2.mp3'
 import castleAudio from '../assets/sounds/castle.mp3'
+import pickup from '../assets/sounds/pickup.mp3'
 
 export default class Resource extends Phaser.Physics.Matter.Sprite {
   static preload(scene) {
@@ -19,6 +21,7 @@ export default class Resource extends Phaser.Physics.Matter.Sprite {
     scene.load.audio('tower1',cave2Audio)
     scene.load.audio('tower2',cave2Audio)
     scene.load.audio('castle',castleAudio)
+    scene.load.audio('pickup',pickup)
   }
 
   constructor(data) {
@@ -30,6 +33,8 @@ export default class Resource extends Phaser.Physics.Matter.Sprite {
       "resources",
       resource.type
     );
+
+    this.drops=JSON.parse(resource.properties.find(p=>p.name=='drops').value)
     this.health = 80;
     this.sound = this.scene.sound.add(this.frame.name)
     this.scene.add.existing(this);
@@ -43,6 +48,8 @@ export default class Resource extends Phaser.Physics.Matter.Sprite {
   hit = () => {
     if (this.sound) this.sound.play();
     this.health--;
-    console.log(`Hitting ${this.name}--${this.health}`);
+    if (this.dead){
+      this.drops.forEach(drop => new DropItem({scene:this.scene,x:this.x,y:this.y,frame:drop}));
+    }
   };
 }
