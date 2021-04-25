@@ -3,13 +3,15 @@ import heroKnightPic from "../assets/images/hero.png";
 import heroKnightJson from "../assets/images/hero_atlas.json";
 import heroKnightAnim from "../assets/images/hero_anim.json";
 import itemsPic from "../assets/images/items.png";
+import MatterEntity from "./MatterEntity";
 
-export default class Hero extends Phaser.Physics.Matter.Sprite {
+import playerAudio from '../assets/sounds/moan.mp3'
+
+export default class Hero extends MatterEntity {
   constructor(data) {
     let { scene, x, y, texture, frame } = data;
-    super(scene.matter.world, x, y, texture, frame);
+    super({...data,health:2,drops:[],name:'hero'})
     this.touching = [];
-    this.scene.add.existing(this);
 
     const { Body, Bodies } = Phaser.Physics.Matter.Matter;
     var playerCollider = Bodies.circle(this.x, this.y, 12, {
@@ -37,11 +39,9 @@ export default class Hero extends Phaser.Physics.Matter.Sprite {
       frameWidth: 32,
       frameHeight: 32,
     });
+    scene.load.audio('hero',playerAudio)
   }
 
-  get velocity() {
-    return this.body.velocity;
-  }
 
   update() {
     const speed = 2.5;
@@ -82,10 +82,7 @@ export default class Hero extends Phaser.Physics.Matter.Sprite {
       callback: (other) => {
         if (other.bodyB.isSensor) return;
         this.touching.push(other.gameObjectB);
-        console.log(this.touching.length);
-        if (other.gameObjectB.frame) {
-          console.log(other.gameObjectB.frame.name);
-        }
+      
       },
       context: this.scene,
     });
@@ -93,7 +90,6 @@ export default class Hero extends Phaser.Physics.Matter.Sprite {
       objectA:[playerSensor],
       callback: other=>{
         this.touching = this.touching.filter(gameObject=> gameObject != other.gameObjectB)
-        console.log(this.touching.length);
       },
       context:this.scene
     })

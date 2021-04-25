@@ -3,32 +3,36 @@ import Hero from "../model/hero.js";
 import mapImage from "../assets/images/pipo-map001.png";
 import mapJson from "../assets/images/map.json";
 
-
 import Resource from "../model/resource.js";
+import Enemy from "../model/enemy.js";
 
 export default class MainScene extends Phaser.Scene {
   constructor() {
     super("MainScene");
+    this.enemies = [];
   }
 
   preload() {
     Hero.preload(this);
-    Resource.preload(this)
+    Enemy.preload(this);
+    Resource.preload(this);
     this.load.image("tiles", mapImage);
     this.load.tilemapTiledJSON("map", mapJson);
   }
   create() {
     const map = this.make.tilemap({ key: "map" });
-    this.map = map
+    this.map = map;
     const tileset = map.addTilesetImage("pipo-map001", "tiles", 32, 32, 0, 0);
-    const layer1 = map.createStaticLayer("Tile Layer 1", tileset, 0, 0);
-    const layer2 = map.createStaticLayer("Tile Layer 2", tileset, 0, 0);
+    const layer1 = map.createLayer("Tile Layer 1", tileset, 0, 0);
+    const layer2 = map.createLayer("Tile Layer 2", tileset, 0, 0);
     layer1.setCollisionByProperty({ collides: true });
     layer2.setCollisionByProperty({ collides: true });
     this.matter.world.convertTilemapLayer(layer1);
     this.matter.world.convertTilemapLayer(layer2);
 
-    this.addResources()
+    this.addResources();
+    this.addEnemies();
+    console.log(this.enemies);
 
     this.player = new Hero({
       scene: this,
@@ -47,13 +51,24 @@ export default class MainScene extends Phaser.Scene {
   }
 
   addResources() {
-    const resources = this.map.getObjectLayer('Resources');
-    resources.objects.forEach(resource =>{
-      let resItem = new Resource({scene:this,resource})    
-    })
+    const resources = this.map.getObjectLayer("Resources");
+    resources.objects.forEach((resource) => {
+      let resItem = new Resource({ scene: this, resource });
+    });
+  }
+  addEnemies() {
+    const enemies = this.map.getObjectLayer("Enemies");
+    enemies.objects.forEach((enemy) => {
+      let enemyItem = new Enemy({
+        scene: this,
+        enemy,
+      });
+      this.enemies.push(enemyItem)
+    });
   }
 
   update() {
+    this.enemies.forEach((enemy) => enemy.update());
     this.player.update();
   }
 }
