@@ -47,6 +47,8 @@ export default class MainScene extends Phaser.Scene {
       left: Phaser.Input.Keyboard.KeyCodes.A,
       right: Phaser.Input.Keyboard.KeyCodes.D,
     });
+
+    this.score = this.add.text(24, 2, 'score: 0', { fontSize: '32px', fill: '#000' });
   }
 
   addResources() {
@@ -69,5 +71,7 @@ export default class MainScene extends Phaser.Scene {
   update() {
     this.enemies.forEach((enemy) => enemy.update());
     this.player.update();
+
+    this.score.setText(`score:${this.player.score}`);
   }
 }

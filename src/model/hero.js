@@ -10,8 +10,9 @@ import playerAudio from "../assets/sounds/moan.mp3";
 export default class Hero extends MatterEntity {
   constructor(data) {
     let { scene, x, y, texture, frame } = data;
-    super({ ...data, health: 10, drops: [], name: "hero" });
+    super({ ...data, health: 5, drops: [], name: "hero" });
     this.touching = [];
+    this.score = 0;
 
     const { Body, Bodies } = Phaser.Physics.Matter.Matter;
     var playerCollider = Bodies.circle(this.x, this.y, 12, {
@@ -30,7 +31,9 @@ export default class Hero extends MatterEntity {
     this.setFixedRotation();
     this.CreateMiningCollisions(playerSensor);
     this.CreatePickupCollisions(playerCollider);
-    this.scene.input.on('pointermove',pointer=>{if(!this.dead)this.setFlipX(pointer.worldX<this.x)})
+    this.scene.input.on("pointermove", (pointer) => {
+      if (!this.dead) this.setFlipX(pointer.worldX < this.x);
+    });
   }
 
   static preload(scene) {
@@ -43,14 +46,14 @@ export default class Hero extends MatterEntity {
     scene.load.audio("hero", playerAudio);
   }
 
-  onDeath = () =>{
-    this.anims.stop()
-    this.setTexture('items',0);
-    this.setOrigin(0.5)
-  }
+  onDeath = () => {
+    this.anims.stop();
+    this.setTexture("items", 0);
+    this.setOrigin(0.5);
+  };
 
   update() {
-    if(this.dead) return;
+    if (this.dead) return;
     const speed = 2.5;
     let playerVelocity = new Phaser.Math.Vector2();
     if (this.inputKeys.left.isDown) {
@@ -128,7 +131,14 @@ export default class Hero extends MatterEntity {
     );
     this.touching.forEach((gameObject) => {
       gameObject.hit();
-      if (gameObject.dead) gameObject.destroy();
+      if (gameObject.dead) {
+        if (gameObject.name === "bandit") {
+          this.score += 200;
+        } else {
+          this.score += 50;
+        }
+        gameObject.destroy();
+      }
     });
   }
 }
