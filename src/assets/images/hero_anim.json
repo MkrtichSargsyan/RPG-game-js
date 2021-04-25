@@ -111,7 +111,7 @@
         {
             "key": "hero_death",
             "type": "frames",
-            "repeat": -1,
+            "repeat": 0,
             "frameRate": 12,
             "frames": [
                 {

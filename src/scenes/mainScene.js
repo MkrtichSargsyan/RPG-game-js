@@ -1,14 +1,16 @@
-import "phaser";
-import Hero from "../model/hero.js";
-import mapImage from "../assets/images/pipo-map001.png";
-import mapJson from "../assets/images/map.json";
+/* eslint-disable no-new */
 
-import Resource from "../model/resource.js";
-import Enemy from "../model/enemy.js";
+import Phaser from 'phaser';
+import Hero from '../model/hero';
+import mapImage from '../assets/images/pipo-map001.png';
+import mapJson from '../assets/images/map.json';
+
+import Resource from '../model/resource';
+import Enemy from '../model/enemy';
 
 export default class MainScene extends Phaser.Scene {
   constructor() {
-    super("MainScene");
+    super('MainScene');
     this.enemies = [];
   }
 
@@ -16,15 +18,16 @@ export default class MainScene extends Phaser.Scene {
     Hero.preload(this);
     Enemy.preload(this);
     Resource.preload(this);
-    this.load.image("tiles", mapImage);
-    this.load.tilemapTiledJSON("map", mapJson);
+    this.load.image('tiles', mapImage);
+    this.load.tilemapTiledJSON('map', mapJson);
   }
+
   create() {
-    const map = this.make.tilemap({ key: "map" });
+    const map = this.make.tilemap({ key: 'map' });
     this.map = map;
-    const tileset = map.addTilesetImage("pipo-map001", "tiles", 32, 32, 0, 0);
-    const layer1 = map.createLayer("Tile Layer 1", tileset, 0, 0);
-    const layer2 = map.createLayer("Tile Layer 2", tileset, 0, 0);
+    const tileset = map.addTilesetImage('pipo-map001', 'tiles', 32, 32, 0, 0);
+    const layer1 = map.createLayer('Tile Layer 1', tileset, 0, 0);
+    const layer2 = map.createLayer('Tile Layer 2', tileset, 0, 0);
     layer1.setCollisionByProperty({ collides: true });
     layer2.setCollisionByProperty({ collides: true });
     this.matter.world.convertTilemapLayer(layer1);
@@ -37,8 +40,8 @@ export default class MainScene extends Phaser.Scene {
       scene: this,
       x: 80,
       y: 160,
-      texture: "hero",
-      frame: "heroknight_idle_0",
+      texture: 'hero',
+      frame: 'heroknight_idle_0',
     });
 
     this.player.inputKeys = this.input.keyboard.addKeys({
@@ -52,19 +55,20 @@ export default class MainScene extends Phaser.Scene {
   }
 
   addResources() {
-    const resources = this.map.getObjectLayer("Resources");
+    const resources = this.map.getObjectLayer('Resources');
     resources.objects.forEach((resource) => {
-      let resItem = new Resource({ scene: this, resource });
+      new Resource({ scene: this, resource });
     });
   }
+
   addEnemies() {
-    const enemies = this.map.getObjectLayer("Enemies");
+    const enemies = this.map.getObjectLayer('Enemies');
     enemies.objects.forEach((enemy) => {
-      let enemyItem = new Enemy({
+      const enemyItem = new Enemy({
         scene: this,
         enemy,
       });
-      this.enemies.push(enemyItem)
+      this.enemies.push(enemyItem);
     });
   }
 

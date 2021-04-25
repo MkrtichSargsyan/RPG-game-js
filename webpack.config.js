@@ -1,18 +1,18 @@
-const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: "./src/index.js",
+  entry: './src/index.js',
 
   output: {
-    filename: "main.js",
-    path: path.resolve(__dirname, "dist"),
+    filename: 'main.js',
+    path: path.resolve(__dirname, 'dist'),
   },
 
   plugins: [
     new HtmlWebpackPlugin({
-      title: "RPG game",
-      template: "./src/index.html",
+      title: 'RPG game',
+      template: './src/index.html',
     }),
   ],
 
@@ -20,15 +20,15 @@ module.exports = {
     rules: [
       {
         test: /\.css$/i,
-        use: ["style-loader", "css-loader"],
+        use: ['style-loader', 'css-loader'],
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif|mp4|mp3)$/i,
         use: {
-          loader: "file-loader",
+          loader: 'file-loader',
           options: {
-            name: "[name].[hash].[ext]",
-            outputPath: "imgs",
+            name: '[name].[hash].[ext]',
+            outputPath: 'imgs',
           },
         },
       },
@@ -36,12 +36,12 @@ module.exports = {
         test: /\.m?js$/,
         exclude: /(node_modules|bower_components)/,
         use: {
-          loader: "babel-loader",
+          loader: 'babel-loader',
           options: {
             presets: [
-              "@babel/preset-env",
+              '@babel/preset-env',
               {
-                plugins: ["@babel/plugin-proposal-class-properties"],
+                plugins: ['@babel/plugin-proposal-class-properties'],
               },
             ],
           },
@@ -52,7 +52,7 @@ module.exports = {
   devServer: {
     port: 1234,
     watchContentBase: true,
-    contentBase: path.resolve(__dirname, "dist"),
+    contentBase: path.resolve(__dirname, 'dist'),
     open: true,
   },
 };

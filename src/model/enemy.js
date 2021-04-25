@@ -1,37 +1,38 @@
-import banditPic from "../assets/images/bandit.png";
-import banditJson from "../assets/images/bandit_atlas.json";
-import banditAnim from "../assets/images/bandit_anim.json";
-import MatterEntity from "./MatterEntity";
+import Phaser from 'phaser';
+import banditPic from '../assets/images/bandit.png';
+import banditJson from '../assets/images/bandit_atlas.json';
+import banditAnim from '../assets/images/bandit_anim.json';
+import MatterEntity from './MatterEntity';
 
-import banditAudio from "../assets/sounds/moan.mp3";
+import banditAudio from '../assets/sounds/moan.mp3';
 
 export default class Enemy extends MatterEntity {
   constructor(data) {
-    let { scene, enemy } = data;
+    const { scene, enemy } = data;
 
-    let drops = JSON.parse(
-      enemy.properties.find((p) => p.name == "drops").value
+    const drops = JSON.parse(
+      enemy.properties.find((p) => p.name === 'drops').value,
     );
 
     super({
       scene,
       x: enemy.x,
       y: enemy.y,
-      texture: "bandit",
-      frame: "lightbandit_idle_0",
+      texture: 'bandit',
+      frame: 'lightbandit_idle_0',
       drops,
       health: 80,
-      name: "bandit",
+      name: 'bandit',
     });
 
     const { Body, Bodies } = Phaser.Physics.Matter.Matter;
-    var enemyCollider = Bodies.circle(this.x, this.y, 12, {
+    const enemyCollider = Bodies.circle(this.x, this.y, 12, {
       isSensor: false,
-      label: "enemyCollider",
+      label: 'enemyCollider',
     });
-    var enemySensor = Bodies.circle(this.x, this.y, 80, {
+    const enemySensor = Bodies.circle(this.x, this.y, 80, {
       isSensor: true,
-      label: "enemySensor",
+      label: 'enemySensor',
     });
     const compoundBody = Body.create({
       parts: [enemyCollider, enemySensor],
@@ -42,20 +43,16 @@ export default class Enemy extends MatterEntity {
     this.scene.matterCollision.addOnCollideStart({
       objectA: [enemySensor],
       callback: (other) => {
-        if (other.gameObjectB && other.gameObjectB.name == "hero")
-          this.attacking = other.gameObjectB;
+        if (other.gameObjectB && other.gameObjectB.name === 'hero') this.attacking = other.gameObjectB;
       },
       context: this.scene,
     });
-
-    // this.setStatic(true);
-    // this.scene.add.existing(this);
   }
 
   static preload(scene) {
-    scene.load.atlas("bandit", banditPic, banditJson);
-    scene.load.animation("bandit_anim", banditAnim);
-    scene.load.audio("bandit", banditAudio);
+    scene.load.atlas('bandit', banditPic, banditJson);
+    scene.load.animation('bandit_anim', banditAnim);
+    scene.load.audio('bandit', banditAudio);
   }
 
   attack = (target) => {
@@ -65,33 +62,31 @@ export default class Enemy extends MatterEntity {
       clearInterval(this.attacktimer);
       return;
     }
-  
+
     target.hit();
   };
 
   update() {
     if (this.dead) return;
     if (this.attacking) {
-      let direction = this.attacking.position.subtract(this.position);
+      const direction = this.attacking.position.subtract(this.position);
       if (direction.length() > 24) {
-        let v = direction.normalize();
+        direction.normalize();
         this.setVelocityX(direction.x);
         this.setVelocityY(direction.y);
         if (this.attacktimer) {
           clearInterval(this.attacktimer);
           this.attacktimer = null;
         }
-      } else {
-        if (this.attacktimer == null) {
-          this.attacktimer = setInterval(this.attack, 500, this.attacking);
-        }
+      } else if (this.attacktimer == null) {
+        this.attacktimer = setInterval(this.attack, 500, this.attacking);
       }
     }
     this.setFlipX(this.velocity.x < 0);
     if (Math.abs(this.velocity.x) > 0.1 || Math.abs(this.velocity.y) > 0.1) {
-      this.anims.play("bandit_run", true);
+      this.anims.play('bandit_run', true);
     } else {
-      this.anims.play("bandit_idle", true);
+      this.anims.play('bandit_idle', true);
     }
   }
 }
