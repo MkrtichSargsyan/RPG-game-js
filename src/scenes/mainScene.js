@@ -32,7 +32,6 @@ export default class MainScene extends Phaser.Scene {
 
     this.addResources();
     this.addEnemies();
-    console.log(this.enemies);
 
     this.player = new Hero({
       scene: this,
