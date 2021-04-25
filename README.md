@@ -2,7 +2,7 @@
 
 > turn-based RPG game with Phaser library
 
-![screenshot](/images/screenshot.png)
+![screenshot](https://user-images.githubusercontent.com/31889642/116005207-fa136b00-a616-11eb-8c8f-4e1c5c24ece5.png)
 
 ## About the game
 
