@@ -1,10 +1,10 @@
-*{
+* {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-body{
+body {
   width: 100%;
   margin: 0 auto;
   max-width: 1840px;
@@ -13,23 +13,3 @@ body{
   background-color: black;
   padding-top: 20px;
 }
-
-/* #zombie-land {
-  background:transparent url(https://www.vippng.com/png/detail/43-430589_old-television-1960s-tv-set.png) no-repeat center center;
-  background-size: 800px 700px;
-  position: absolute;
-  height: 630px;
-  width: 800px;
-} */
-
-/* 
-canvas{
-  position: relative;
-  left: 85px;
-  top:45px;
-  height: 425px;
-  width:500px;
-  background: #fff;
-  overflow: auto;
-}
- */
