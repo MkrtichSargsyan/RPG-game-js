@@ -2,15 +2,15 @@
 
 import Phaser from 'phaser';
 import Hero from '../model/hero';
-import mapImage from '../assets/images/pipo-map001.png';
-import mapJson from '../assets/images/map.json';
-
 import Resource from '../model/resource';
 import Enemy from '../model/enemy';
 
+import map from '../assets/images/pipo-map001.png'
+import mapJson from '../assets/images/map.json';
+
 export default class MainScene extends Phaser.Scene {
   constructor() {
-    super('MainScene');
+    super('mainScene');
     this.enemies = [];
   }
 
@@ -18,7 +18,7 @@ export default class MainScene extends Phaser.Scene {
     Hero.preload(this);
     Enemy.preload(this);
     Resource.preload(this);
-    this.load.image('tiles', mapImage);
+    this.load.image('tiles', map);
     this.load.tilemapTiledJSON('map', mapJson);
   }
 

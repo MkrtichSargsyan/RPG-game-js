@@ -1,13 +1,9 @@
 /* eslint-disable no-unused-expressions */
 
 import Phaser from 'phaser';
-import heroKnightPic from '../assets/images/hero.png';
-import heroKnightJson from '../assets/images/hero_atlas.json';
-import heroKnightAnim from '../assets/images/hero_anim.json';
-import itemsPic from '../assets/images/items.png';
+
 import MatterEntity from './MatterEntity';
 
-import playerAudio from '../assets/sounds/moan.mp3';
 
 export default class Hero extends MatterEntity {
   constructor(data) {
@@ -40,20 +36,13 @@ export default class Hero extends MatterEntity {
   }
 
   static preload(scene) {
-    scene.load.atlas('hero', heroKnightPic, heroKnightJson);
-    scene.load.animation('hero_anim', heroKnightAnim);
-    scene.load.spritesheet('items', itemsPic, {
-      frameWidth: 32,
-      frameHeight: 32,
-    });
-    scene.load.audio('hero', playerAudio);
   }
-
+  
   onDeath = () => {
     this.anims.stop();
     this.anims.play('hero_death', 60, false);
   };
-
+  
   update() {
     if (this.dead) return;
     const speed = 2.5;
