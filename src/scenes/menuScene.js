@@ -20,7 +20,7 @@ export default class MenuScene extends Phaser.Scene {
     });
     this.scores = this.add.image(width, 350, 'scores').setInteractive();
     this.scores.on('pointerdown', () => {
-      this.scene.start('leaderboard');
+      this.scene.start('scoreScene');
     });
   }
 }

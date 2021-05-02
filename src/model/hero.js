@@ -9,7 +9,6 @@ import MatterEntity from "./MatterEntity";
 
 export default class Hero extends MatterEntity {
   constructor(data) {
-
     super({
       ...data,
       health: 5,
@@ -17,12 +16,10 @@ export default class Hero extends MatterEntity {
       name: "hero",
     });
 
-
-    
     this.touching = [];
 
     this.score = 0;
-    localStorage.setItem('score:', JSON.stringify(this.score)); 
+    localStorage.setItem("score:", JSON.stringify(this.score));
 
     const { Body, Bodies } = Phaser.Physics.Matter.Matter;
     const playerCollider = Bodies.circle(this.x, this.y, 12, {
@@ -57,9 +54,14 @@ export default class Hero extends MatterEntity {
       user: username,
       score: this.score,
     };
-    api.postData('https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/7vSAsY26XJBzTY7u4Shv/scores', obj);
-    this.scene.scene.stop('mainScene');
-    this.scene.scene.start('menuScene');
+    api
+      .postData(
+        "https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/KgZJx3pWKX0uX5A67Ryb/scores",
+        obj
+      )
+      .then((data) => console.log(data));
+    this.scene.scene.stop("mainScene");
+    this.scene.scene.start("menuScene");
     window.location.reload();
   };
 
@@ -148,7 +150,7 @@ export default class Hero extends MatterEntity {
         } else {
           this.score += 50;
         }
-        localStorage.setItem('score:', JSON.stringify(this.score)); 
+        localStorage.setItem("score:", JSON.stringify(this.score));
         gameObject.destroy();
       }
     });

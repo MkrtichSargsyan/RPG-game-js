@@ -10,6 +10,7 @@ import PreloaderScene from "./scenes/preloaderScene";
 
 
 import "./style.css";
+import ScoreScene from "./scenes/scoreScene";
 
 const width = 800;
 const height = 600;
@@ -23,7 +24,7 @@ const config = {
   dom: { createContainer: true },
   type: Phaser.AUTO,
   parent: "zombie-land",
-  scene:  [PreloaderScene,MenuScene,UserName,HelpScene, MainScene],
+  scene:  [PreloaderScene,MenuScene,UserName,HelpScene, MainScene,ScoreScene],
   physics: {
     default: "matter",
     matter: {
