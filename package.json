@@ -43,6 +43,7 @@
     "webpack-dev-server": "^3.11.2"
   },
   "dependencies": {
+    "@babel/polyfill": "^7.12.1",
     "phaser": "^3.54.0",
     "phaser-matter-collision-plugin": "^0.10.2"
   }
