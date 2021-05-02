@@ -32,7 +32,11 @@
 
 ## Live Demo
 
-[Play the game](https://mkrtichsargsyan.github.io/Fitness-Shop/)
+[Play the game](https://ecstatic-rosalind-eeae5f.netlify.app/)
+
+## Game Design Implementaion
+
+You can see a detailed Game Design Document [here](https://docs.google.com/document/d/1lvSvKc88b_weoVdJrMmSRbY5YBPYTrVhusjvfUwDqIs/edit?usp=sharing)
 
 
 
