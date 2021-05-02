@@ -1,9 +1,8 @@
-import 'phaser';
+import Phaser from 'phaser';
 
-export default class UserName extends Phaser.Scene{
-
-  constructor(){
-    super('userName')
+export default class UserName extends Phaser.Scene {
+  constructor() {
+    super('userName');
   }
 
   create() {
@@ -22,5 +21,4 @@ export default class UserName extends Phaser.Scene{
       this.scene.start('mainScene');
     });
   }
-
 }

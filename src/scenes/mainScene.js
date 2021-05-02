@@ -5,7 +5,7 @@ import Hero from '../model/hero';
 import Resource from '../model/resource';
 import Enemy from '../model/enemy';
 
-import map from '../assets/images/pipo-map001.png'
+import map from '../assets/images/pipo-map001.png';
 import mapJson from '../assets/images/map.json';
 
 export default class MainScene extends Phaser.Scene {

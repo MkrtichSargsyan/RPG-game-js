@@ -1,8 +1,6 @@
-
 import MatterEntity from './MatterEntity';
 
 export default class Resource extends MatterEntity {
-
   constructor(data) {
     const { scene, resource } = data;
 
@@ -23,7 +21,6 @@ export default class Resource extends MatterEntity {
     this.setStatic(true);
   }
 
-  static preload(scene) {
+  static preload() {
   }
-  
 }

@@ -1,24 +1,22 @@
-import "phaser";
+import Phaser from 'phaser';
 
-import play from '../assets/images/play.png'
-import scores from '../assets/images/scores.png'
-import help from '../assets/images/help.png'
+import play from '../assets/images/play.png';
+import scores from '../assets/images/scores.png';
+import help from '../assets/images/help.png';
 
-import instructions from '../assets/images/INSTRUCTIONS.png'
-import wasd from '../assets/images/WASD-for-movement.png'
-import attackText from '../assets/images/Left-click-for-attack.png'
+import instructions from '../assets/images/INSTRUCTIONS.png';
+import wasd from '../assets/images/WASD-for-movement.png';
+import attackText from '../assets/images/Left-click-for-attack.png';
 
-
-import banditPic from "../assets/images/bandit.png";
-import banditJson from "../assets/images/bandit_atlas.json";
-import banditAnim from "../assets/images/bandit_anim.json";
-import banditAudio from "../assets/sounds/moan.mp3";
+import banditPic from '../assets/images/bandit.png';
+import banditJson from '../assets/images/bandit_atlas.json';
+import banditAnim from '../assets/images/bandit_anim.json';
+import banditAudio from '../assets/sounds/moan.mp3';
 
 import heroKnightPic from '../assets/images/hero.png';
 import heroKnightJson from '../assets/images/hero_atlas.json';
 import heroKnightAnim from '../assets/images/hero_anim.json';
 import itemsPic from '../assets/images/items.png';
-import playerAudio from '../assets/sounds/moan.mp3';
 
 import resourcesPic from '../assets/images/resources.png';
 import resourcesJson from '../assets/images/resources_atlas.json';
@@ -29,69 +27,67 @@ import castleAudio from '../assets/sounds/castle.mp3';
 import pickup from '../assets/sounds/pickup.mp3';
 import mapImage from '../assets/images/pipo-map001.png';
 
-
-
 export default class PreloaderScene extends Phaser.Scene {
   constructor() {
-    super("preloaderScene");
+    super('preloaderScene');
   }
 
   preload() {
-    var progressBar = this.add.graphics();
-    var progressBox = this.add.graphics();
+    const progressBar = this.add.graphics();
+    const progressBox = this.add.graphics();
     progressBox.fillStyle(0x222222, 0.8);
     progressBox.fillRect(240, 270, 320, 50);
 
-    var width = this.cameras.main.width;
-    var height = this.cameras.main.height;
-    var loadingText = this.make.text({
+    const { width } = this.cameras.main;
+    const { height } = this.cameras.main;
+    const loadingText = this.make.text({
       x: width / 2,
-      y: height / 2 - 50, 
-      text: "Loading...",
+      y: height / 2 - 50,
+      text: 'Loading...',
       style: {
-        font: "20px monospace",
-        fill: "#ffffff",
+        font: '20px monospace',
+        fill: '#ffffff',
       },
     });
     loadingText.setOrigin(0.5, 0.5);
 
-    var percentText = this.make.text({
+    const percentText = this.make.text({
       x: width / 2,
       y: height / 2 - 5,
-      text: "0%",
+      text: '0%',
       style: {
-        font: "18px monospace",
-        fill: "#ffffff",
+        font: '18px monospace',
+        fill: '#ffffff',
       },
     });
     percentText.setOrigin(0.5, 0.5);
 
-    var assetText = this.make.text({
+    const assetText = this.make.text({
       x: width / 2,
       y: height / 2 + 50,
-      text: "",
+      text: '',
       style: {
-        font: "18px monospace",
-        fill: "#ffffff",
+        font: '18px monospace',
+        fill: '#ffffff',
       },
     });
     assetText.setOrigin(0.5, 0.5);
 
     // update progress bar
-    this.load.on("progress", function (value) {
-      percentText.setText(parseInt(value * 100) + "%");
+    this.load.on('progress', (value) => {
+      percentText.setText(`${parseInt(value * 100)}%`); // eslint-disable-line
       progressBar.clear();
       progressBar.fillStyle(0xffffff, 1);
       progressBar.fillRect(250, 280, 300 * value, 30);
     });
 
     // update file progress text
-    this.load.on("fileprogress", function (file) {
-      assetText.setText("Loading asset: " + file.key);
+    this.load.on('fileprogress', (file) => {
+      assetText.setText(`Loading asset: ${file.key}`);
     });
 
     // remove progress bar when complete
-    this.load.on("complete", function () {
+    this.load.on('complete', () => {
       progressBar.destroy();
       progressBox.destroy();
       loadingText.destroy();
@@ -106,9 +102,9 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.image('help', help);
     this.load.image('tiles', mapImage);
 
-    this.load.atlas("bandit", banditPic, banditJson);
-    this.load.animation("bandit_anim", banditAnim);
-    this.load.audio("bandit", banditAudio);
+    this.load.atlas('bandit', banditPic, banditJson);
+    this.load.animation('bandit_anim', banditAnim);
+    this.load.audio('bandit', banditAudio);
 
     this.load.atlas('hero', heroKnightPic, heroKnightJson);
     this.load.animation('hero_anim', heroKnightAnim);
@@ -116,8 +112,7 @@ export default class PreloaderScene extends Phaser.Scene {
       frameWidth: 32,
       frameHeight: 32,
     });
-    this.load.audio('hero', playerAudio);
-
+    this.load.audio('hero', banditAudio);
 
     this.load.atlas('resources', resourcesPic, resourcesJson);
     this.load.audio('tree', treeAudio);
@@ -141,12 +136,12 @@ export default class PreloaderScene extends Phaser.Scene {
     this.scene.start('menuScene');
   }
 
-  init () {
+  init() {
     this.readyCount = 0;
   }
-   
-  ready () {
-    this.readyCount++;
+
+  ready() {
+    this.readyCount += 1;
     if (this.readyCount === 2) {
       this.scene.start('menuScene');
     }

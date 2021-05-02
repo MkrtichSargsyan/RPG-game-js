@@ -1,15 +1,14 @@
-import Phaser from "phaser";
+import Phaser from 'phaser';
 
-import api from "../api/scoresApi";
+import api from '../api/scoresApi';
 
 export default class ScoreScene extends Phaser.Scene {
   constructor() {
-    super("scoreScene");
+    super('scoreScene');
   }
 
   create() {
-    const url =
-      "https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/KgZJx3pWKX0uX5A67Ryb/scores";
+    const url = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/KgZJx3pWKX0uX5A67Ryb/scores';
 
     api.getData(url).then((data) => {
       this.space = 0;
@@ -23,9 +22,9 @@ export default class ScoreScene extends Phaser.Scene {
             170 + this.space,
             `${index + 1}. ${userObj.user} | ${userObj.score}`,
             {
-              font: "19px monospace",
-              fill: "#0000ff",
-            }
+              font: '19px monospace',
+              fill: '#0000ff',
+            },
           );
           this.space += 30;
         });
@@ -34,14 +33,14 @@ export default class ScoreScene extends Phaser.Scene {
     this.submit = this.add.dom(
       240,
       100,
-      "button",
-      "padding:20px;background-color:gray;",
-      "Go Back"
+      'button',
+      'padding:20px;background-color:gray;',
+      'Go Back',
     );
 
-    this.btn = document.querySelector("button");
-    this.btn.addEventListener("click", () => {
-      this.scene.start("menuScene");
+    this.btn = document.querySelector('button');
+    this.btn.addEventListener('click', () => {
+      this.scene.start('menuScene');
     });
   }
 }

@@ -1,16 +1,14 @@
-import "phaser";
-
+import Phaser from 'phaser';
 
 export default class MenuScene extends Phaser.Scene {
   constructor() {
-    super("menuScene");
+    super('menuScene');
   }
 
-
   create() {
-    var width = this.cameras.main.width/2;
+    const width = this.cameras.main.width / 2;
 
-    this.play = this.add.image(width, 150, "play").setInteractive();
+    this.play = this.add.image(width, 150, 'play').setInteractive();
     this.play.on('pointerdown', () => {
       this.scene.start('userName');
     });

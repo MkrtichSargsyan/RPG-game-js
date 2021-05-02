@@ -1,11 +1,11 @@
 /* eslint-disable no-unused-expressions */
 
-import "@babel/polyfill";
+import '@babel/polyfill';
 
-import Phaser from "phaser";
-import api from "../api/scoresApi";
+import Phaser from 'phaser';
+import api from '../api/scoresApi';
 
-import MatterEntity from "./MatterEntity";
+import MatterEntity from './MatterEntity';
 
 export default class Hero extends MatterEntity {
   constructor(data) {
@@ -13,22 +13,22 @@ export default class Hero extends MatterEntity {
       ...data,
       health: 5,
       drops: [],
-      name: "hero",
+      name: 'hero',
     });
 
     this.touching = [];
 
     this.score = 0;
-    localStorage.setItem("score:", JSON.stringify(this.score));
+    localStorage.setItem('score:', JSON.stringify(this.score));
 
     const { Body, Bodies } = Phaser.Physics.Matter.Matter;
     const playerCollider = Bodies.circle(this.x, this.y, 12, {
       isSensor: false,
-      label: "playerCollider",
+      label: 'playerCollider',
     });
     const playerSensor = Bodies.circle(this.x, this.y, 24, {
       isSensor: true,
-      label: "playerSensor",
+      label: 'playerSensor',
     });
     const compoundBody = Body.create({
       parts: [playerCollider, playerSensor],
@@ -38,31 +38,33 @@ export default class Hero extends MatterEntity {
     this.setFixedRotation();
     this.CreateMiningCollisions(playerSensor);
     this.CreatePickupCollisions(playerCollider);
-    this.scene.input.on("pointermove", (pointer) => {
+    this.scene.input.on('pointermove', (pointer) => {
       if (!this.dead) this.setFlipX(pointer.worldX < this.x);
     });
   }
 
-  static preload(scene) {}
+  static preload() {}
 
   onDeath = () => {
     this.anims.stop();
-    this.anims.play("hero_death", 60, false);
+    this.anims.play('hero_death', 60, false);
 
-    const username = JSON.parse(localStorage.getItem("username:"));
+    const username = JSON.parse(localStorage.getItem('username:'));
     const obj = {
       user: username,
       score: this.score,
     };
     api
       .postData(
-        "https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/KgZJx3pWKX0uX5A67Ryb/scores",
-        obj
-      )
-      .then((data) => console.log(data));
-    this.scene.scene.stop("mainScene");
-    this.scene.scene.start("menuScene");
-    window.location.reload();
+        'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/KgZJx3pWKX0uX5A67Ryb/scores',
+        obj,
+      ).then(data=>{});
+      setTimeout(()=>{
+        this.scene.scene.stop('mainScene');
+        this.scene.scene.start('menuScene');
+        window.location.reload();
+      },3000)
+   
   };
 
   update() {
@@ -87,16 +89,14 @@ export default class Hero extends MatterEntity {
     const pointer = this.scene.input.activePointer;
 
     if (Math.abs(this.velocity.x) > 0.1 || Math.abs(this.velocity.y) > 0.1) {
-      this.anims.play("hero_run", true);
+      this.anims.play('hero_run', true);
     } else if (pointer.isDown) {
-      this.anims.play("hero_atack", true);
+      this.anims.play('hero_atack', true);
       this.whackStuff();
     } else {
-      this.anims.play("hero_idle", true);
+      this.anims.play('hero_idle', true);
     }
-    this.scene.input.on("pointermove", (pointer) =>
-      this.setFlipX(pointer.worldX < this.x)
-    );
+    this.scene.input.on('pointermove', (pointer) => this.setFlipX(pointer.worldX < this.x));
   }
 
   CreateMiningCollisions(playerSensor) {
@@ -112,7 +112,7 @@ export default class Hero extends MatterEntity {
       objectA: [playerSensor],
       callback: (other) => {
         this.touching = this.touching.filter(
-          (gameObject) => gameObject !== other.gameObjectB
+          (gameObject) => gameObject !== other.gameObjectB,
         );
       },
       context: this.scene,
@@ -123,16 +123,14 @@ export default class Hero extends MatterEntity {
     this.scene.matterCollision.addOnCollideStart({
       objectA: [playerCollider],
       callback: (other) => {
-        if (other.gameObjectB && other.gameObjectB.pickup)
-          other.gameObjectB.pickup();
+        if (other.gameObjectB && other.gameObjectB.pickup) other.gameObjectB.pickup();
       },
       context: this.scene,
     });
     this.scene.matterCollision.addOnCollideActive({
       objectA: [playerCollider],
       callback: (other) => {
-        if (other.gameObjectB && other.gameObjectB.pickup)
-          other.gameObjectB.pickup();
+        if (other.gameObjectB && other.gameObjectB.pickup) other.gameObjectB.pickup();
       },
       context: this.scene,
     });
@@ -140,17 +138,17 @@ export default class Hero extends MatterEntity {
 
   whackStuff() {
     this.touching = this.touching.filter(
-      (gameObject) => gameObject.hit && !gameObject.dead
+      (gameObject) => gameObject.hit && !gameObject.dead,
     );
     this.touching.forEach((gameObject) => {
       gameObject.hit();
       if (gameObject.dead) {
-        if (gameObject.name === "bandit") {
+        if (gameObject.name === 'bandit') {
           this.score += 200;
         } else {
           this.score += 50;
         }
-        localStorage.setItem("score:", JSON.stringify(this.score));
+        localStorage.setItem('score:', JSON.stringify(this.score));
         gameObject.destroy();
       }
     });
