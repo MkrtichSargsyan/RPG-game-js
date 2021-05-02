@@ -58,13 +58,12 @@ export default class Hero extends MatterEntity {
       .postData(
         'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/KgZJx3pWKX0uX5A67Ryb/scores',
         obj,
-      ).then(data=>{});
-      setTimeout(()=>{
-        this.scene.scene.stop('mainScene');
-        this.scene.scene.start('menuScene');
-        window.location.reload();
-      },3000)
-   
+      ).then(() => {});
+    setTimeout(() => {
+      this.scene.scene.stop('mainScene');
+      this.scene.scene.start('menuScene');
+      window.location.reload();
+    }, 3000);
   };
 
   update() {
