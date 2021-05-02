@@ -24,10 +24,7 @@
 - Webpack
 - Tiled
 - Babbel
-
-## Watch a video presentation of the project 
-
-[watch video]().
+- Netlify for the deployment
 
 
 ## Live Demo
