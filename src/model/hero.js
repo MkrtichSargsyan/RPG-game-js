@@ -73,10 +73,10 @@ export default class Hero extends MatterEntity {
     if (this.inputKeys.left.isDown) {
       playerVelocity.x = -1;
       // (pointer) => this.setFlipX(pointer.worldX < this.x);
-      this.setFlipX(true)
+      this.setFlipX(true);
     } else if (this.inputKeys.right.isDown) {
       playerVelocity.x = 1;
-      this.setFlipX(false)
+      this.setFlipX(false);
     }
     if (this.inputKeys.up.isDown) {
       playerVelocity.y = -1;
