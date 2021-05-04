@@ -7,10 +7,10 @@
 ## About the game
 
 
-> The game is about a lonely knight that fell into an island in which there are lots of bandits. He can cut the trees and destroy other objects and get 50 score, also he can kill the bandits and get 200 scores for every bandit.
+> The game is about a lonely knight that fell into an island on which there are lots of bandits. He can cut the trees and destroy other objects and get a 50 score, also he can kill the bandits and get 200 scores for every bandit.
 
-> Gameplay is Extremely simple. You move around with WASD(W-Move up,A-Move left,S-Move down,D-Move Right) keys as usual 
-> and left click for attack. Try to get as much point as you can, before you die.
+> Gameplay is Extremely simple. You move around with WASD(W-Move up, A-Move left, S-Move down, D-Move Right) keys, as usual, 
+> and left-click for the attack. Try to get as many points as you can, before you die.
 
 > Good Luck!
 
@@ -31,7 +31,7 @@
 
 [Play the game](https://ecstatic-rosalind-eeae5f.netlify.app/)
 
-## Game Design Implementaion
+## Game Design Implementation
 
 You can see a detailed Game Design Document [here](https://docs.google.com/document/d/1lvSvKc88b_weoVdJrMmSRbY5YBPYTrVhusjvfUwDqIs/edit?usp=sharing)
 
