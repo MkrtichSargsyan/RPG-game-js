@@ -1,0 +1,108 @@
+{
+    "anims": [
+        {
+            "key": "bandit_run",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 6,
+            "frames": [
+                {
+                    "key": "bandit",
+                    "frame": "lightbandit_run_0"
+                },
+                {
+                    "key": "bandit",
+                    "frame": "lightbandit_run_1"
+                },
+                {
+                    "key": "bandit",
+                    "frame": "lightbandit_run_2"
+                },
+                {
+                    "key": "bandit",
+                    "frame": "lightbandit_run_3"
+                },
+                {
+                    "key": "bandit",
+                    "frame": "lightbandit_run_4"
+                },
+                {
+                    "key": "bandit",
+                    "frame": "lightbandit_run_5"
+                },
+                {
+                    "key": "bandit",
+                    "frame": "lightbandit_run_6"
+                },
+                {
+                    "key": "bandit",
+                    "frame": "lightbandit_run_7"
+                }
+            ]
+        },
+        {
+            "key": "bandit_idle",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 12,
+            "frames": [
+                {
+                    "key": "bandit",
+                    "frame": "lightbandit_idle_0"
+                },
+                {
+                    "key": "bandit",
+                    "frame": "lightbandit_idle_1"
+                },
+                {
+                    "key": "bandit",
+                    "frame": "lightbandit_idle_2"
+                },
+                {
+                    "key": "bandit",
+                    "frame": "lightbandit_idle_3"
+                }
+            ]
+        },
+        {
+            "key": "bandit_attack",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 12,
+            "frames": [
+                {
+                    "key": "bandit",
+                    "frame": "lightbandit_attack_0"
+                },
+                {
+                    "key": "bandit",
+                    "frame": "lightbandit_attack_1"
+                },
+                {
+                    "key": "bandit",
+                    "frame": "lightbandit_attack_2"
+                },
+                {
+                    "key": "bandit",
+                    "frame": "lightbandit_attack_3"
+                },
+                {
+                    "key": "bandit",
+                    "frame": "lightbandit_attack_4"
+                },
+                {
+                    "key": "bandit",
+                    "frame": "lightbandit_attack_5"
+                },
+                {
+                    "key": "bandit",
+                    "frame": "lightbandit_attack_6"
+                },
+                {
+                    "key": "bandit",
+                    "frame": "lightbandit_attack_7"
+                }
+            ]
+        }
+    ]
+}

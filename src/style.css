@@ -1,0 +1,15 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 100%;
+  margin: 0 auto;
+  max-width: 1840px;
+  display: flex;
+  justify-content: center;
+  background-color: black;
+  padding-top: 20px;
+}

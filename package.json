@@ -1,36 +1,69 @@
 {
-  "name": "phaser-starter",
-  "version": "3.0.1",
-  "description": "Minimal starter project to get a Phaser game environment up and running with ease.",
+  "name": "RPG-game-js",
+  "version": "1.0.0",
+  "description": "![Phaser avatar studying](./src/img/study.png)",
+  "main": "webpack.config.js",
+  "scripts": {
+    "dev": "webpack --mode development",
+    "build": "webpack --mode production",
+    "start": "webpack serve --mode=development --config webpack.config.js --open",
+    "test": "jest"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest"
+    },
+    "setupFiles": [
+      "jest-canvas-mock"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "jsx"
+    ],
+    "moduleNameMapper": {
+      "\\.(css|less|sass|scss)$": "<rootDir>/test/mocks/styleMock.js",
+      "\\.(gif|ttf|eot|svg|png)$": "<rootDir>/test/mocks/fileMock.js"
+    }
+  },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/oliverbenns/phaser-starter.git"
+    "url": "git+https://github.com/MkrtichSargsyan/RPG-game-js.git"
   },
-  "author": {
-    "name": "Oliver Benns",
-    "email": "info@oliverbenns.com",
-    "url": "https://oliverbenns.com"
-  },
-  "license": "MIT",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "bugs": {
-    "url": "https://github.com/oliverbenns/phaser-starter/issues"
+    "url": "https://github.com/MkrtichSargsyan/RPG-game-js/issues"
   },
-  "homepage": "https://github.com/oliverbenns/phaser-starter#readme",
+  "homepage": "https://github.com/MkrtichSargsyan/RPG-game-js#readme",
   "devDependencies": {
-    "@babel/core": "^7.2.2",
-    "@babel/preset-env": "^7.3.1",
-    "babel-loader": "^8.0.5",
-    "file-loader": "^3.0.1",
-    "html-webpack-plugin": "^3.2.0",
-    "webpack": "^4.29.3",
-    "webpack-cli": "^3.1.0",
-    "webpack-dev-server": "^3.1.4"
-  },
-  "scripts": {
-    "start": "webpack-dev-server --mode development",
-    "build": "rm -rf dist && webpack --mode production"
+    "@babel/core": "^7.14.0",
+    "@babel/plugin-proposal-class-properties": "^7.13.0",
+    "@babel/preset-env": "^7.14.0",
+    "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.2.2",
+    "css-loader": "^5.2.1",
+    "eslint": "^7.25.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "file-loader": "6.2.0",
+    "html-webpack-plugin": "^5.3.1",
+    "jest": "^26.6.3",
+    "json-loader": "^0.5.7",
+    "style-loader": "^2.0.0",
+    "stylelint": "^13.13.0",
+    "stylelint-config-standard": "^21.0.0",
+    "stylelint-csstree-validator": "^1.9.0",
+    "stylelint-scss": "^3.19.0",
+    "webpack": "^5.32.0",
+    "webpack-cli": "^4.6.0",
+    "webpack-dev-server": "^3.11.2"
   },
   "dependencies": {
-    "phaser": "^3.16.1"
+    "@babel/polyfill": "^7.12.1",
+    "babel-jest": "^26.6.3",
+    "jest-canvas-mock": "^2.3.0",
+    "phaser": "^3.54.0",
+    "phaser-matter-collision-plugin": "^0.10.2"
   }
 }
