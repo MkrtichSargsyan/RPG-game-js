@@ -1,54 +1,58 @@
-const webpack = require('webpack')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const config = {
+module.exports = {
+  entry: './src/index.js',
+
   output: {
-    filename: '[hash].js',
+    filename: 'main.js',
+    path: path.resolve(__dirname, 'dist'),
   },
-  resolve: {
-    modules: ['src', 'node_modules'],
-  },
+
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: 'RPG game',
+      template: './src/index.html',
+    }),
+  ],
+
   module: {
     rules: [
       {
-        test: /\.js$/,
-        exclude: /node_modules/,
+        test: /\.css$/i,
+        use: ['style-loader', 'css-loader'],
+      },
+      {
+        test: /\.(png|svg|jpg|jpeg|gif|mp4|mp3)$/i,
         use: {
-          loader: 'babel-loader',
+          loader: 'file-loader',
           options: {
-            presets: ['@babel/preset-env'],
+            name: '[name].[hash].[ext]',
+            outputPath: 'imgs',
           },
         },
       },
       {
-        test: /\.(png|jpg|gif)$/,
-        use: 'file-loader',
-      },
-      {
-        test: /\.(vert|frag)$/,
-        use: 'raw-loader',
+        test: /\.m?js$/,
+        exclude: /(node_modules|bower_components)/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              '@babel/preset-env',
+              {
+                plugins: ['@babel/plugin-proposal-class-properties'],
+              },
+            ],
+          },
+        },
       },
     ],
   },
-  stats: 'minimal',
-  devtool: 'source-map',
-  performance: {
-    hints: false,
-  },
-  plugins: [
-    new webpack.DefinePlugin({
-      CANVAS_RENDERER: true,
-      WEBGL_RENDERER: true,
-    }),
-    new HtmlWebpackPlugin({
-      favicon: 'src/img/favicon.png',
-      template: 'src/index.html',
-    }),
-  ],
   devServer: {
-    port: 8080,
-    stats: 'minimal',
+    port: 1234,
+    watchContentBase: true,
+    contentBase: path.resolve(__dirname, 'dist'),
+    open: true,
   },
-}
-
-module.exports = config
+};

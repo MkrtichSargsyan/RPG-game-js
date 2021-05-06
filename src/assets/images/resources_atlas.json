@@ -1,0 +1,138 @@
+{
+    "frames": [
+        {
+            "filename": "castle",
+            "frame": {
+                "w": 96,
+                "h": 96,
+                "x": 1,
+                "y": 1
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "cave2",
+            "frame": {
+                "w": 64,
+                "h": 64,
+                "x": 98,
+                "y": 1
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "cave1",
+            "frame": {
+                "w": 64,
+                "h": 64,
+                "x": 98,
+                "y": 66
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "tower2",
+            "frame": {
+                "w": 32,
+                "h": 64,
+                "x": 1,
+                "y": 98
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "tower1",
+            "frame": {
+                "w": 32,
+                "h": 64,
+                "x": 34,
+                "y": 98
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "cave6",
+            "frame": {
+                "w": 32,
+                "h": 32,
+                "x": 163,
+                "y": 1
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "cave5",
+            "frame": {
+                "w": 32,
+                "h": 32,
+                "x": 163,
+                "y": 34
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "cave4",
+            "frame": {
+                "w": 32,
+                "h": 32,
+                "x": 163,
+                "y": 67
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "cave3",
+            "frame": {
+                "w": 32,
+                "h": 32,
+                "x": 163,
+                "y": 100
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "tree",
+            "frame": {
+                "w": 32,
+                "h": 32,
+                "x": 1,
+                "y": 163
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        }
+    ],
+    "meta": {
+        "description": "Atlas generado con Atlas Packer Gamma V2",
+        "web": "https://gammafp.github.io/atlas-packer-phaser/"
+    }
+}

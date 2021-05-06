@@ -1,44 +1,45 @@
-import 'phaser';
-import pkg from 'phaser/package.json';
-import introImage from 'img/study.png';
+/* eslint-disable no-new */
 
-// This is the entry point of your game.
+import Phaser from 'phaser';
+import PhaserMatterCollisionPlugin from 'phaser-matter-collision-plugin';
+import MainScene from './scenes/mainScene';
+import MenuScene from './scenes/menuScene';
+import UserName from './scenes/userName';
+import HelpScene from './scenes/helpScene';
+import PreloaderScene from './scenes/preloaderScene';
+
+import './style.css';
+import ScoreScene from './scenes/scoreScene';
 
 const width = 800;
 const height = 600;
+const backgroundColor = '#333333';
 
 const config = {
   width,
   height,
+  backgroundColor,
+
+  dom: { createContainer: true },
   type: Phaser.AUTO,
-  scene: { preload, create },
+  parent: 'zombie-land',
+  scene: [PreloaderScene, MenuScene, UserName, HelpScene, MainScene, ScoreScene],
+  physics: {
+    default: 'matter',
+    matter: {
+      debug: false,
+      gravity: { y: 0 },
+    },
+  },
+  plugins: {
+    scene: [
+      {
+        plugin: PhaserMatterCollisionPlugin,
+        key: 'matterCollision',
+        mapping: 'matterCollision',
+      },
+    ],
+  },
 };
 
-const game = new Phaser.Game(config);
-
-// function preload() {
-//   this.load.image('study', introImage);
-// }
-function preload ()
-{
-    this.load.image('sky', 'assets/sky.png');
-    this.load.image('ground', 'assets/platform.png');
-    this.load.image('star', 'assets/star.png');
-    this.load.image('bomb', 'assets/bomb.png');
-    this.load.spritesheet('dude', 
-        'assets/dude.png',
-        { frameWidth: 32, frameHeight: 48 }
-    );
-}
-
-function create() {
-  const centerX = width / 2;
-  const centerY = height / 2;
-  const welcomeMessage = `Welcome to Phaser ${pkg.version}`;
-
-  this.add.image(centerX, centerY * 1.2, 'study');
-
-  this.add
-    .text(centerX, centerY * 0.8, welcomeMessage, { font: "bold 19px Arial", fill: "#fff" })
-    .setOrigin(0.5, 0.5);
-}
+new Phaser.Game(config);

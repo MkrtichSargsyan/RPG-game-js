@@ -1,0 +1,268 @@
+{
+    "frames": [
+        {
+            "filename": "lightbandit_attack_0",
+            "frame": {
+                "w": 48,
+                "h": 48,
+                "x": 1,
+                "y": 1
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "lightbandit_attack_7",
+            "frame": {
+                "w": 48,
+                "h": 48,
+                "x": 50,
+                "y": 1
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "lightbandit_attack_1",
+            "frame": {
+                "w": 48,
+                "h": 48,
+                "x": 1,
+                "y": 50
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "lightbandit_attack_2",
+            "frame": {
+                "w": 48,
+                "h": 48,
+                "x": 50,
+                "y": 50
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "lightbandit_attack_3",
+            "frame": {
+                "w": 48,
+                "h": 48,
+                "x": 99,
+                "y": 1
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "lightbandit_attack_4",
+            "frame": {
+                "w": 48,
+                "h": 48,
+                "x": 99,
+                "y": 50
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "lightbandit_attack_5",
+            "frame": {
+                "w": 48,
+                "h": 48,
+                "x": 1,
+                "y": 99
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "lightbandit_attack_6",
+            "frame": {
+                "w": 48,
+                "h": 48,
+                "x": 50,
+                "y": 99
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "lightbandit_idle_0",
+            "frame": {
+                "w": 48,
+                "h": 48,
+                "x": 99,
+                "y": 99
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "lightbandit_idle_1",
+            "frame": {
+                "w": 48,
+                "h": 48,
+                "x": 148,
+                "y": 1
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "lightbandit_idle_2",
+            "frame": {
+                "w": 48,
+                "h": 48,
+                "x": 148,
+                "y": 50
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "lightbandit_idle_3",
+            "frame": {
+                "w": 48,
+                "h": 48,
+                "x": 148,
+                "y": 99
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "lightbandit_run_0",
+            "frame": {
+                "w": 48,
+                "h": 48,
+                "x": 1,
+                "y": 148
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "lightbandit_run_1",
+            "frame": {
+                "w": 48,
+                "h": 48,
+                "x": 50,
+                "y": 148
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "lightbandit_run_2",
+            "frame": {
+                "w": 48,
+                "h": 48,
+                "x": 99,
+                "y": 148
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "lightbandit_run_3",
+            "frame": {
+                "w": 48,
+                "h": 48,
+                "x": 148,
+                "y": 148
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "lightbandit_run_4",
+            "frame": {
+                "w": 48,
+                "h": 48,
+                "x": 197,
+                "y": 1
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "lightbandit_run_5",
+            "frame": {
+                "w": 48,
+                "h": 48,
+                "x": 197,
+                "y": 50
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "lightbandit_run_6",
+            "frame": {
+                "w": 48,
+                "h": 48,
+                "x": 197,
+                "y": 99
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "lightbandit_run_7",
+            "frame": {
+                "w": 48,
+                "h": 48,
+                "x": 197,
+                "y": 148
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        }
+    ],
+    "meta": {
+        "description": "Atlas generado con Atlas Packer Gamma V2",
+        "web": "https://gammafp.github.io/atlas-packer-phaser/"
+    }
+}
